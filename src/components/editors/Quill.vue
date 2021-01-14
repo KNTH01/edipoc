@@ -2,17 +2,21 @@
   <div>
     <h1 class="my-8 text-4xl font-semibold">Quill Editor</h1>
     <!-- Create the editor container -->
-    <div id="editor">
-      <p>Hello World!</p>
-      <p>Some initial <strong>bold</strong> text</p>
-      <p><br /></p>
+    <div class="flex justify-between space-x-8">
+      <div class="w-1/2">
+        <div id="editor">
+          <p>Hello World!</p>
+          <p>Some initial <strong>bold</strong> text</p>
+          <p><br /></p>
+        </div>
+
+        <button class="my-6 button" @click="getContent">Get Content</button>
+      </div>
+
+      <pre class="w-1/2 overflow-auto pre-content">
+        {{ content }}
+      </pre>
     </div>
-
-    <button class="my-6 button" @click="getContent">Get Content</button>
-
-    <pre class="pre-content">
-      {{ content }}
-    </pre>
   </div>
 </template>
 
