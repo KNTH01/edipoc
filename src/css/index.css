@@ -6,4 +6,8 @@
   .button {
     @apply px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700;
   }
+
+  .pre-content {
+    @apply pt-8 my-6 bg-purple-50;
+  }
 }

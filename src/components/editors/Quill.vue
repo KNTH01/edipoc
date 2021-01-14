@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="my-8 text-4xl font-semibold">Quill Editor</h1>
     <!-- Create the editor container -->
     <div id="editor">
       <p>Hello World!</p>
@@ -8,6 +9,10 @@
     </div>
 
     <button class="my-6 button" @click="getContent">Get Content</button>
+
+    <pre class="pre-content">
+      {{ content }}
+    </pre>
   </div>
 </template>
 
@@ -18,9 +23,10 @@ import Quill from "quill";
 export default {
   setup() {
     const quill = ref(null);
+    const content = ref(null);
 
     onMounted(() => {
-      console.log(' on est la ');
+      console.log(" on est la ");
       quill.value = new Quill("#editor", {
         theme: "snow",
       });
@@ -29,10 +35,10 @@ export default {
     return {
       getContent() {
         if (quill.value) {
-          console.log(quill.value)
-          console.log(JSON.stringify(quill.value.getContents()));
+          content.value = JSON.stringify(quill.value.getContents());
         }
       },
+      content,
     };
   },
 };
