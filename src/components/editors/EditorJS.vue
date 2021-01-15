@@ -17,23 +17,23 @@
 </template>
 
 <script>
-import EditorJS from "@editorjs/editorjs";
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import EditorJS from '@editorjs/editorjs'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 export default {
   setup() {
-    const editor = ref(null);
-    const content = ref(null);
+    const editor = ref(null)
+    const content = ref(null)
 
     onMounted(() => {
-      editor.value = new EditorJS({ holder: "editorjs" });
-    });
+      editor.value = new EditorJS({ holder: 'editorjs' })
+    })
 
     onBeforeUnmount(() => {
       if (editor.value) {
         // editor.value.destroy();
       }
-    });
+    })
 
     return {
       getContent() {
@@ -41,17 +41,17 @@ export default {
           editor.value
             .save()
             .then((outputData) => {
-              content.value = JSON.stringify(outputData);
+              content.value = JSON.stringify(outputData)
             })
             .catch((error) => {
-              console.log("Saving failed: ", error);
-            });
+              console.log('Saving failed: ', error)
+            })
         }
       },
       content,
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

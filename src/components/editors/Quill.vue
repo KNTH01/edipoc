@@ -21,30 +21,30 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
-import Quill from "quill";
+import { ref, onMounted } from 'vue'
+import Quill from 'quill'
 
 export default {
   setup() {
-    const quill = ref(null);
-    const content = ref(null);
+    const quill = ref(null)
+    const content = ref(null)
 
     onMounted(() => {
-      quill.value = new Quill("#editor", {
-        theme: "snow",
-      });
-    });
+      quill.value = new Quill('#editor', {
+        theme: 'snow',
+      })
+    })
 
     return {
       getContent() {
         if (quill.value) {
-          content.value = JSON.stringify(quill.value.getContents());
+          content.value = JSON.stringify(quill.value.getContents())
         }
       },
       content,
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped></style>

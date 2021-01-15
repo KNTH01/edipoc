@@ -6,8 +6,8 @@
 </template>
 
 <script setup>
-import QuillEditor from "./components/editors/Quill.vue";
-import EditorJS from "./components/editors/EditorJS.vue";
+import QuillEditor from './components/editors/Quill.vue'
+import EditorJS from './components/editors/EditorJS.vue'
 </script>
 
 <style></style>
