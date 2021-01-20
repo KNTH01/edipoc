@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h1 class="my-8 text-4xl font-semibold">Editor.js</h1>
+    <h1 class="my-8 text-4xl font-semibold">
+      Editor.js
+    </h1>
     <!-- Create the editor container -->
     <div class="flex justify-between space-x-8">
       <div class="w-1/2">
-        <div id="editorjs"></div>
+        <div id="editorjs" />
 
-        <button class="my-6 button" @click="getContent">Get Content</button>
+        <button class="my-6 button" @click="getContent">
+          Get Content
+        </button>
       </div>
 
       <pre class="w-1/2 overflow-auto pre-content">

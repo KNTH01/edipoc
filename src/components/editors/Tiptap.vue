@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h1 class="my-8 text-4xl font-semibold">Quill Editor</h1>
+    <h1 class="my-8 text-4xl font-semibold">
+      Quill Editor
+    </h1>
     <!-- Create the editor container -->
     <div class="flex justify-between space-x-8">
       <div class="w-1/2">
         <editor-content :editor="editor" />
 
-        <button class="my-6 button" @click="getContent">Get Content</button>
+        <button class="my-6 button" @click="getContent">
+          Get Content
+        </button>
       </div>
 
       <pre class="w-1/2 overflow-auto pre-content">
@@ -39,16 +43,14 @@ export default {
     })
 
     onBeforeUnmount(() => {
-      if (editor.value) {
+      if (editor.value)
         editor.value.destroy()
-      }
     })
 
     return {
       getContent() {
-        if (quill.value) {
+        if (quill.value)
           content.value = JSON.stringify(quill.value.getContents())
-        }
       },
       content,
     }
