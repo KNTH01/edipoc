@@ -7,12 +7,11 @@ import ViteComponents from 'vite-plugin-components'
 
 const config: UserConfig = {
   alias: {
-    '/~/': `${path.resolve(__dirname, 'src')}/`,
+    '~/': `${path.resolve(__dirname, 'src')}/`,
   },
+
   plugins: [
-    Vue({
-      ssr: !!process.env.SSG,
-    }),
+    Vue(),
 
     // https://github.com/vamplate/vite-plugin-voie
     Voie({
