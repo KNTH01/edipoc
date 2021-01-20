@@ -4,7 +4,11 @@
     <!-- Create the editor container -->
     <div class="flex justify-between space-x-8">
       <div class="w-1/2">
-        <editor-content :editor="editor" />
+        <div id="editor">
+          <p>Hello World!</p>
+          <p>Some initial <strong>bold</strong> text</p>
+          <p><br /></p>
+        </div>
 
         <button class="my-6 button" @click="getContent">Get Content</button>
       </div>
@@ -17,31 +21,18 @@
 </template>
 
 <script>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { Editor, EditorContent } from 'tiptap'
+import { ref, onMounted } from 'vue'
+import Quill from 'quill'
 
 export default {
-  components: {
-    EditorContent,
-  },
-
   setup() {
-    const editor = ref(null)
+    const quill = ref(null)
     const content = ref(null)
 
     onMounted(() => {
-      editor.value = new Editor({
-        content: '<p>This is just a boring paragraph</p>',
-        onUpdate: ({ getJSON, getHTML }) => {
-          content.value = getJSON()
-        },
+      quill.value = new Quill('#editor', {
+        theme: 'snow',
       })
-    })
-
-    onBeforeUnmount(() => {
-      if (editor.value) {
-        editor.value.destroy()
-      }
     })
 
     return {

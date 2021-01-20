@@ -1,5 +1,7 @@
 module.exports = {
-  extends: ['plugin:vue/vue3-recommended', 'prettier', 'prettier/vue'],
-  plugins: ['prettier'],
-  rules: { 'prettier/prettier': 'error' },
+  extends: '@antfu/eslint-config-vue',
+  rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+  },
 }
