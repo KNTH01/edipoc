@@ -6,11 +6,7 @@
     <!-- Create the editor container -->
     <div class="flex justify-between space-x-8">
       <div class="w-1/2">
-        <div id="editor">
-          <p>Hello World!</p>
-          <p>Some initial <strong>bold</strong> text</p>
-          <p><br></p>
-        </div>
+        <editor-content :editor="editor" />
 
         <button class="my-6 button" @click="getContent">
           Get Content
@@ -25,18 +21,31 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
-import Quill from 'quill'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { Editor, EditorContent, defaultExtensions } from '@tiptap/vue-starter-kit'
 
 export default {
+  components: {
+    EditorContent,
+  },
+
   setup() {
-    const quill = ref(null)
+    const editor = ref(null)
     const content = ref(null)
 
     onMounted(() => {
-      quill.value = new Quill('#editor', {
-        theme: 'snow',
+      editor.value = new Editor({
+        extensions: defaultExtensions(),
+        content: '<p>This is just a boring paragraph</p>',
+        onUpdate: ({ getJSON, getHTML }) => {
+          content.value = getJSON()
+        },
       })
+    })
+
+    onBeforeUnmount(() => {
+      if (editor.value)
+        editor.value.destroy()
     })
 
     return {
