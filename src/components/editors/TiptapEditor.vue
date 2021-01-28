@@ -1,13 +1,15 @@
 <template>
   <div>
     <h1 class="my-8 text-4xl font-semibold">
-      Quill Editor
+      Tiptap v2 editor
     </h1>
     <!-- Create the editor container -->
     <div class="flex justify-between space-x-8">
       <div class="w-1/2">
-        <editor-content :editor="editor" />
-
+        <!-- Titap Vue template is not working right now -->
+        <!-- <editor-content :editor="editor" /> -->
+        <!-- So Tiptap Vanilla template is used -->
+        <div class="element" />
         <button class="my-6 button" @click="getContent">
           Get Content
         </button>
@@ -22,11 +24,13 @@
 
 <script>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { Editor, EditorContent, defaultExtensions } from '@tiptap/vue-starter-kit'
+// import { Editor, EditorContent, defaultExtensions } from '@tiptap/vue-starter-kit'
+import { Editor } from '@tiptap/core'
+import { defaultExtensions } from '@tiptap/starter-kit'
 
 export default {
   components: {
-    EditorContent,
+    // EditorContent,
   },
 
   setup() {
@@ -35,6 +39,7 @@ export default {
 
     onMounted(() => {
       editor.value = new Editor({
+        element: document.querySelector('.element'),
         extensions: defaultExtensions(),
         content: '<p>This is just a boring paragraph</p>',
         onUpdate: ({ getJSON, getHTML }) => {
@@ -44,15 +49,14 @@ export default {
     })
 
     onBeforeUnmount(() => {
-      if (editor.value)
-        editor.value.destroy()
+      editor.value && editor.value.destroy()
     })
 
     return {
       getContent() {
-        if (quill.value)
-          content.value = JSON.stringify(quill.value.getContents())
+        content.value = editor.value && editor.value.getJSON()
       },
+
       content,
     }
   },

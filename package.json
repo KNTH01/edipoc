@@ -11,6 +11,7 @@
   "dependencies": {
     "@editorjs/editorjs": "^2.19.1",
     "@tiptap/core": "^2.0.0-alpha.10",
+    "@tiptap/starter-kit": "^2.0.0-alpha.7",
     "@tiptap/vue": "^2.0.0-alpha.6",
     "@tiptap/vue-starter-kit": "^2.0.0-alpha.9",
     "@vueuse/core": "^4.0.8",
