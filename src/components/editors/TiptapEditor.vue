@@ -18,87 +18,87 @@
             insertTable
           </button>
 
-          <template v-if="editor.isActive('table')">
+          <template>
             <button
-              v-if="editor.can().addColumnBefore()"
+              :disabled="!editor.can().addColumnBefore()"
               @click="editor.chain().focus().addColumnBefore().run()"
             >
               addColumnBefore
             </button>
             <button
-              v-if="editor.can().addColumnAfter()"
+              :disabled="!editor.can().addColumnAfter()"
               @click="editor.chain().focus().addColumnAfter().run()"
             >
               addColumnAfter
             </button>
             <button
-              v-if="editor.can().deleteColumn()"
+              :disabled="!editor.can().deleteColumn()"
               @click="editor.chain().focus().deleteColumn().run()"
             >
               deleteColumn
             </button>
             <button
-              v-if="editor.can().addRowBefore()"
+              :disabled="!editor.can().addRowBefore()"
               @click="editor.chain().focus().addRowBefore().run()"
             >
               addRowBefore
             </button>
             <button
-              v-if="editor.can().addRowAfter()"
+              :disabled="!editor.can().addRowAfter()"
               @click="editor.chain().focus().addRowAfter().run()"
             >
               addRowAfter
             </button>
             <button
-              v-if="editor.can().deleteRow()"
+              :disabled="!editor.can().deleteRow()"
               @click="editor.chain().focus().deleteRow().run()"
             >
               deleteRow
             </button>
             <button
-              v-if="editor.can().deleteTable()"
+              :disabled="!editor.can().deleteTable()"
               @click="editor.chain().focus().deleteTable().run()"
             >
               deleteTable
             </button>
             <button
-              v-if="editor.can().mergeCells()"
+              :disabled="!editor.can().mergeCells()"
               @click="editor.chain().focus().mergeCells().run()"
             >
               mergeCells
             </button>
             <button
-              v-if="editor.can().splitCell()"
+              :disabled="!editor.can().splitCell()"
               @click="editor.chain().focus().splitCell().run()"
             >
               splitCell
             </button>
             <button
-              v-if="editor.can().toggleHeaderColumn()"
+              :disabled="!editor.can().toggleHeaderColumn()"
               @click="editor.chain().focus().toggleHeaderColumn().run()"
             >
               toggleHeaderColumn
             </button>
             <button
-              v-if="editor.can().toggleHeaderRow()"
+              :disabled="!editor.can().toggleHeaderRow()"
               @click="editor.chain().focus().toggleHeaderRow().run()"
             >
               toggleHeaderRow
             </button>
             <button
-              v-if="editor.can().toggleHeaderCell()"
+              :disabled="!editor.can().toggleHeaderCell()"
               @click="editor.chain().focus().toggleHeaderCell().run()"
             >
               toggleHeaderCell
             </button>
             <button
-              v-if="editor.can().mergeOrSplit()"
+              :disabled="!editor.can().mergeOrSplit()"
               @click="editor.chain().focus().mergeOrSplit().run()"
             >
               mergeOrSplit
             </button>
             <button
-              v-if="editor.can().setCellAttribute('colspan', 2)"
+              :disabled="!editor.can().setCellAttribute('colspan', 2)"
               @click="
                 editor.chain().focus().setCellAttribute('colspan', 2).run()
               "
@@ -106,19 +106,19 @@
               setCellAttribute
             </button>
             <button
-              v-if="editor.can().fixTables()"
+              :disabled="!editor.can().fixTables()"
               @click="editor.chain().focus().fixTables().run()"
             >
               fixTables
             </button>
             <button
-              v-if="editor.can().goToNextCell()"
+              :disabled="!editor.can().goToNextCell()"
               @click="editor.chain().focus().goToNextCell().run()"
             >
               goToNextCell
             </button>
             <button
-              v-if="editor.can().goToPreviousCell()"
+              :disabled="!editor.can().goToPreviousCell()"
               @click="editor.chain().focus().goToPreviousCell().run()"
             >
               goToPreviousCell
@@ -164,8 +164,7 @@ export default {
     onMounted(() => {
       editor.value = new Editor({
         element: document.querySelector('.element'),
-        extensions:
-        [
+        extensions: [
           ...defaultExtensions(),
           Table.configure({
             resizable: true,
